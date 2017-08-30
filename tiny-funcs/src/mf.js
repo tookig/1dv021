@@ -20,7 +20,7 @@ function add () {
 
   // TODO: Write your code here.
 
-  return a + b
+  return a + parseInt(b)
 }
 
 /**
@@ -33,7 +33,7 @@ function concat () {
   let time = 9
   let weeks = 'weeks.'
 
-  // TODO: Write your code here.
+  return message + ' ' + time + ' ' + weeks
 }
 
 /**
@@ -45,7 +45,7 @@ function round () {
   let firstNumber = 12.24
   let secondNumber = 29.27
 
-  // TODO: Write your code here.
+  return parseInt(firstNumber + secondNumber + 0.5)
 }
 
 /**
@@ -55,7 +55,11 @@ function round () {
  * @returns {string} A string with comma separated odd values.
  */
 function getOddNumbers (max) {
-  // TODO: Write your code here.
+  let stringValues = ''
+  for (let i = 1; i <= max; i += 2) {
+    stringValues += i + ', '
+  }
+  return stringValues.substr(0, stringValues.length - 2)
 }
 
 /**
@@ -70,8 +74,15 @@ function getOddNumbers (max) {
  */
 function greetings () {
   let hour = new Date().getHours()
-
-  // TODO: Write your code here.
+  if ((hour === 24) || (hour < 8)) {
+    return 'Good night!'
+  } else if (hour < 12) {
+    return 'Good morning!'
+  } else if (hour < 18) {
+    return 'Good afternoon!'
+  } else {
+    return 'Good evening!'
+  }
 }
 
 /**
@@ -81,7 +92,12 @@ function greetings () {
  * @returns {string} - A new string with all matches of a hyphen replaced by a space.
  */
 function replaceHyphensFor (str) {
-  // TODO: Write your code here.
+  for (let i = 0; i < str.length; i++) {
+    if (str.charAt(i) === '-') {
+      str = str.substr(0, i) + ' ' + str.substr(i + 1, str.length)
+    }
+  }
+  return str
 }
 
 /**
@@ -91,7 +107,14 @@ function replaceHyphensFor (str) {
  * @returns {string} - A new string with all matches of a hyphen replaced by a space.
  */
 function replaceHyphensWhile (str) {
-  // TODO: Write your code here.
+  let i = 0
+  while (i < str.length) {
+    if (str.charAt(i) === '-') {
+      str = str.substr(0, i) + ' ' + str.substr(i + 1, str.length)
+    }
+    ++i
+  }
+  return str
 }
 
 /**
@@ -100,7 +123,14 @@ function replaceHyphensWhile (str) {
  * @returns {string} - A string '11-12-13, 21-22-23, 31-32-33, 41-42-43, 51-52-53'.
  */
 function getNumberSequence () {
-  // TODO: Write your code here.
+  let str = ''
+  for (let i = 1; i <= 5; i++) {
+    for (let j = 1; j <= 3; j++) {
+      str += i + (j + (j === 3 ? '' : '-'))
+    }
+    str += i < 5 ? ', ' : ''
+  }
+  return str
 }
 
 exports.add = add
