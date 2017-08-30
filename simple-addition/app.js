@@ -9,7 +9,7 @@
 
 // Get the module "calc". Using ./src/ to indicate that it is
 // placed in a subdirectory of this directory.
-const calc = require('./src/calc')
+require('./src/calc')
 
 // Call the function "addNumber" in the calc module without
 // any arguments and save the result in a new local variable.
