@@ -16,7 +16,12 @@
  * @returns {number} The total sum of the numbers in the array.
 */
 function getSum (data) {
-  // TODO: Write your code here.
+  if (!Array.isArray(data)) {
+    throw new TypeError('\'data\' parameter must be an array.')
+  }
+  return data.reduce(function (sum, value) {
+    return sum + value
+  }, 0)
 }
 
 exports.getSum = getSum
