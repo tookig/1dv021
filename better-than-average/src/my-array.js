@@ -17,7 +17,20 @@
  * @returns {string[]}
  */
 function filterBetterThanAverage (students) {
-  // TODO: Write your code here.
+  if (!Array.isArray(students)) {
+    throw new TypeError('\'students\' parameter must be an array of objects.')
+  }
+  // Hitta medelvärdet
+  var mean = students.reduce(function (sum, student) {
+    return sum + student.points
+  }, 0) / students.length
+  // Returnera ny array med de studenter som är bättre eller lika bra
+  // som medelvärdet
+  return students.filter(function (student) {
+    return student.points >= mean
+  }).map(function (student) {
+    return student.name
+  })
 }
 
 exports.filterBetterThanAverage = filterBetterThanAverage
