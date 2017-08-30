@@ -9,7 +9,7 @@
 
 'use strict'
 
-const mostWanted = require('./mostWanted')
+const mostWanted = require('./MostWanted')
 
 /**
  * Returns the first gangster whoes full name matching the initials.
@@ -18,19 +18,20 @@ const mostWanted = require('./mostWanted')
  * @returns {string} The first full name found matching the initials.
  */
 function getGangster (initials) {
-  // TODO: Fix the bug(s) in this function to get the tests to pass.
   let names = mostWanted.getNames()
-  let theSuspect
+  let theSuspect = 'No suspect found!'
   let name
   let initialsOfTheName
 
-  do {
-    name = names.next().value
+  name = names.next().value
+  while (name) {
     initialsOfTheName = mostWanted.getInitials(name)
     if (initials === initialsOfTheName) {
       theSuspect = name
+      break
     }
-  } while (name)
+    name = names.next().value
+  }
 
   return theSuspect
 }
