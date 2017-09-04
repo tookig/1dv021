@@ -15,7 +15,13 @@
 * @returns {boolean}
 */
 function isValid (number) {
-  // TODO: Write your code here! This is the first function to implement.
+  let remaining = number
+  let sum = 0
+  do {
+    sum += remaining % 10
+    remaining = Number.parseInt(remaining / 10)
+  } while (remaining > 0)
+  return number % sum === 0
 }
 
 /**
@@ -25,7 +31,11 @@ function isValid (number) {
 * @returns {number}
 */
 function getNext (number) {
-  // TODO: Write your code here! This is the second function to implement.
+  let i = number + 1
+  while (!isValid(i)) {
+    i += 1
+  }
+  return i
 }
 
 /**
@@ -36,7 +46,13 @@ function getNext (number) {
 * @returns {number[]}
 */
 function getSequence (count, start = 0) {
-  // TODO: Write your code here! This is the third function to implement.
+  let current = start
+  let sequence = []
+  for (let i = 0; i < count; i += 1) {
+    current = getNext(current)
+    sequence.push(current)
+  }
+  return sequence
 }
 
 // Exports
