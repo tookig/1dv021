@@ -19,7 +19,9 @@ function add (varArgs) {
   for (let i in arguments) {
     let val = arguments[i]
     if (Array.isArray(val)) {
-
+      val.forEach(function (nextArgs) {
+        sum += add(nextArgs)
+      })
     } else if (typeof val === 'string') {
       let number = Number.parseFloat(val.replace(',', '.'))
       if (Number.isNaN(number)) {
