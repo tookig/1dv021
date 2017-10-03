@@ -9,7 +9,27 @@
 
 'use strict'
 
-// TODO: Write your code here.
+const legoBrickPrototype = {
+  toString: function toString () {
+    let knobText = ''
+    for (let y = 0; y < this.y; y++) {
+      for (let x = 0; x < this.x; x++) {
+        knobText += '®'
+        if (x < this.x - 1) {
+          knobText += ' '
+        }
+      }
+      if (y < this.y - 1) {
+        knobText += '\n'
+      }
+    }
+    return knobText
+  },
+
+  render: function render () {
+    console.log(this.toString())
+  }
+}
 
 /**
  * Returns an object representing a lego brick.
@@ -24,8 +44,27 @@
  * @returns {function} obj.toString - A function returning a string representing the object.
  * @returns {function} obj.render - A function rendering the object.
  */
-let createLegoBrick = function (x, y, color) {
-  // TODO: Write your code here.
+let createLegoBrick = function (x = 2, y = 4, color = 'red') {
+  return Object.create(legoBrickPrototype, {
+    x: {
+      writable: true,
+      enumerable: true,
+      configurable: true,
+      value: x
+    },
+    y: {
+      writable: true,
+      enumerable: true,
+      configurable: true,
+      value: y
+    },
+    color: {
+      writable: true,
+      enumerable: true,
+      configurable: true,
+      value: color
+    }
+  })
 }
 
 // Exports

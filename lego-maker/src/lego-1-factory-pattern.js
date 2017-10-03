@@ -22,8 +22,34 @@
  * @returns {function} obj.toString - A function returning a string representing the object.
  * @returns {function} obj.render - A function rendering the object.
  */
-let createLegoBrick = function (x, y, color) {
-  // TODO: Write your code here.
+let createLegoBrick = function (x = 2, y = 4, color = 'red') {
+  function toString () {
+    let knobText = ''
+    for (let y = 0; y < this.y; y++) {
+      for (let x = 0; x < this.x; x++) {
+        knobText += '®'
+        if (x < this.x - 1) {
+          knobText += ' '
+        }
+      }
+      if (y < this.y - 1) {
+        knobText += '\n'
+      }
+    }
+    return knobText
+  }
+
+  function render () {
+    console.log(this.toString())
+  }
+
+  return {
+    x: x,
+    y: y,
+    color: color,
+    toString: toString,
+    render: render
+  }
 }
 
 // Exports
